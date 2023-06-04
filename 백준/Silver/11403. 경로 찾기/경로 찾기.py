@@ -22,6 +22,4 @@ for i in range(N):
                 result[i][j] = 1
 
 for a in result:
-    for b in a:
-        print(b, end = ' ')
-    print()
+    print(' '.join(map(str,a)))
