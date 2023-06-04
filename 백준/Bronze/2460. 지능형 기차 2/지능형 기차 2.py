@@ -1,10 +1,13 @@
 from sys import stdin
 input = stdin.readline
 
-result = [0]
+max = 0
+num = 0
 
 for i in range(10):
     a, b = map(int,input().split())
-    result.append(result[i]-a+b)
+    num = num-a+b
+    if max < num:
+        max = num
     
-print(max(result))
+print(max)
