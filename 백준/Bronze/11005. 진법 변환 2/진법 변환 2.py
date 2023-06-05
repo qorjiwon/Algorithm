@@ -1,3 +1,6 @@
+from sys import stdin
+input = stdin.readline
+
 N, B = map(int, input().split())
 
 n = 0
