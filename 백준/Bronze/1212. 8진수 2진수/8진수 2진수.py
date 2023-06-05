@@ -1,6 +1,3 @@
-from sys import stdin
-input = stdin.readline
+import sys
 
-x = input()
-result = bin(int(x, 8))
-print(result[2:])
+print(bin(int(sys.stdin.readline(), 8))[2:])
