@@ -8,8 +8,7 @@ for i in range(N):
     
 result = queue.popleft()
 while queue:
-    tmp = queue.popleft()
-    queue.append(tmp)
+    queue.rotate(-1)
     result = queue.popleft()
     
 print(result)
