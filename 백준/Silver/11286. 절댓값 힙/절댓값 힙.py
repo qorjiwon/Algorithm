@@ -1,9 +1,8 @@
 import heapq, sys
-input = sys.stdin.readline
 
 heap = []
-for _ in range(int(input())):
-    n = int(input())
+for _ in range(int(sys.stdin.readline())):
+    n = int(sys.stdin.readline())
     if n == 0:
         if len(heap):
             print(heapq.heappop(heap)[1])
