@@ -1,5 +1,4 @@
-import heapq
-import sys
+import heapq, sys
 input = sys.stdin.readline
 
 heap = []
