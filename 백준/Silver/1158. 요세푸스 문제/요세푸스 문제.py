@@ -7,7 +7,6 @@ i = 0
 
 while a:
     i = (i+K-1)%len(a)
-    ans.append(str(a[i]))
-    a.remove(a[i])
+    ans.append(str(a.pop(i)))
 
 print('<'+', '.join(ans)+'>')
