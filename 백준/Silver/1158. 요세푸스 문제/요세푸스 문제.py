@@ -1,15 +1,13 @@
-from collections import deque
 import sys
-
 N, K = map(int,sys.stdin.readline().split())
 
-q = deque()
-for i in range(1,N+1):
-    q.append(str(i))
+a = [i for i in range(1,N+1)]
+ans = []
+i = 0
 
-print('<',end='')
-for _ in range(N-1):
-    for _ in range(K-1):
-        q.append(q.popleft())
-    print(q.popleft()+', ',end='')
-print(q.pop()+'>')
+while a:
+    i = (i+K-1)%len(a)
+    ans.append(str(a[i]))
+    a.remove(a[i])
+
+print('<'+', '.join(ans)+'>')
