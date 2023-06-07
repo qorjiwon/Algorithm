@@ -1,4 +1,6 @@
-N = int(input())
-l = list(map(int, input().split()))
+from sys import stdin
+input = stdin.readline
 
-print(min(l), max(l))
+N = int(input())
+a = list(map(int, input().split()))
+print(min(a), max(a))
