@@ -7,4 +7,4 @@ def gcd(a, b):
         return gcd(b, a%b)
     
 gcd_ = gcd(max(a,b), min(a,b))
-print(gcd_, a*b//gcd_, end='\n')
+print(gcd_, int(a*b/gcd_), end='\n')
