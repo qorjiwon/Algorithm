@@ -1,6 +1,7 @@
 a = [int(input()) for _ in range(9)]
-find = 0
-for i in range(8):
+
+find = i =0
+while not find:
     for j in range(i+1, 9):
         if sum(a)-a[i]-a[j] == 100:
             a.pop(j)
@@ -10,4 +11,4 @@ for i in range(8):
             for elem in a:
                 print(elem)
             break
-    if find: break
+    i += 1
