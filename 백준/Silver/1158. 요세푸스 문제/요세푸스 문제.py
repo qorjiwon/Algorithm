@@ -1,5 +1,7 @@
 from collections import deque
-N, K = map(int,input().split())
+import sys
+
+N, K = map(int,sys.stdin.readline().split())
 
 q = deque()
 for i in range(1,N+1):
