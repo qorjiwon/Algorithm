@@ -1,7 +1,7 @@
 import sys
 N, K = map(int,sys.stdin.readline().split())
 
-a = [i for i in range(1,N+1)]
+a = list(range(1,N+1))
 ans = []
 i = 0
 
