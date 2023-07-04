@@ -7,7 +7,4 @@ for _ in range(m):
     cup[x] = cup[y]
     cup[y] = temp
     
-if cup.count(1)==0:
-    print(-1)
-else:
-    print(cup.index(1))
+print(cup.index(1))
