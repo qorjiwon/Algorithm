@@ -12,7 +12,7 @@ for _ in range(int(input())):
             if distance > 1000:
                 graph[i][j]=inf
             else:
-                graph[i][j]=distance
+                graph[i][j]=1
     for k in range(n+2):
         for i in range(n+2):
             for j in range(n+2):
