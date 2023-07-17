@@ -1,9 +1,9 @@
 def solution(players, callings):
     arr = {}
     ar = {}
-    for i in range(len(players)):
-        arr[i] = players[i]
-        ar[players[i]] = i
+    for i, player in enumerate(players):
+        arr[i] = player
+        ar[player] = i
         
     for call in callings:
         idx = ar[call]
