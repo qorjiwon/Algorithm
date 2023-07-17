@@ -1,17 +1,10 @@
 def solution(players, callings):
-    arr = {}
-    ar = {}
-    for i, player in enumerate(players):
-        arr[i] = player
-        ar[player] = i
+    arr = {key:i for i, key in enumerate(players)}
         
-    for call in callings:
-        idx = ar[call]
-        temp = arr[idx-1]
-        arr[idx-1] = arr[idx]
-        arr[idx] = temp
-        ar[arr[idx]] = idx
-        ar[arr[idx-1]] = idx-1
+    for player in callings:
+        rank = arr[player]
+        arr[player] -= 1
+        arr[players[rank-1]] += 1
+        players[rank], players[rank-1] = players[rank-1], players[rank]
            
-    players = [arr[i] for i in range(len(players))]
     return players
