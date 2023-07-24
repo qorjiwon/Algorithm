@@ -1,38 +1,44 @@
+import sys
+input = sys.stdin.readline
+
 N, M, V = map(int, input().split())
-
-graph=[[] for i in range(N+1)]
-
+graph = [[] for _ in range(N+1)]
 for _ in range(M):
-    x, y = map(int, input().split())
-    graph[x].append(y)
-    graph[y].append(x)
-for i in range(1, N+1):
+    a, b = map(int, input().split())
+    graph[a].append(b)
+    graph[b].append(a)
+    
+for i in range(N+1):
     graph[i].sort()
 
-visited=[0]*(N+1)
-
-def dfs(graph, v, visited):
-    visited[v]=1
-    print(v, end=' ')
-    for i in graph[v]:
-        if(visited[i] == 0):
-            dfs(graph, i, visited)
-
-dfs(graph, V, visited)
-print()
-###########################################################
+def dfs(start, visited):
+    visited[start]=1
+    print(start, end=' ')
+    for e in graph[start]:
+        if visited[e] == 0:
+            dfs(e, visited)
+    
 from collections import deque
 
-visited=[0]*(N+1)
-
-def bfs(graph, v, visited):
-    queue = deque([v])
-    while queue:
-        v = queue.popleft()
-        visited[v]=1
-        print(v, end=' ')
-        for i in graph[v]:
-            if (visited[i]==0):
-                visited[i]=1
-                queue.append(i)
-bfs(graph, V, visited)
+def bfs(visited, q):
+    x = q.popleft()
+    print(x, end=' ')
+    visited[x]=1
+    for e in graph[x]:
+        if visited[e] == 0:
+            q.append(e)
+            visited[e]=1
+    while q:
+        x = q.popleft()
+        print(x, end=' ')
+        for e in graph[x]:
+            if visited[e] == 0:
+                q.append(e)
+                visited[e]=1
+    
+visited = [0]*(N+1)
+dfs(V, visited)
+print()
+q = deque([V])
+visitedd = [0]*(N+1)
+bfs(visitedd, q)
