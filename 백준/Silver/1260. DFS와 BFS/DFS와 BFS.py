@@ -21,13 +21,6 @@ def dfs(start, visited):
 from collections import deque
 
 def bfs(visited, q):
-    x = q.popleft()
-    print(x, end=' ')
-    visited[x]=1
-    for e in graph[x]:
-        if visited[e] == 0:
-            q.append(e)
-            visited[e]=1
     while q:
         x = q.popleft()
         print(x, end=' ')
@@ -41,4 +34,5 @@ dfs(V, visited)
 print()
 q = deque([V])
 visitedd = [0]*(N+1)
+visitedd[V]=1
 bfs(visitedd, q)
