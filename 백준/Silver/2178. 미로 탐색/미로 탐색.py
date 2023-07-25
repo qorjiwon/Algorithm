@@ -1,16 +1,6 @@
-import sys
-input = sys.stdin.readline
-
 N, M = map(int, input().split())
-miro=[]
+miro=[list(map(int, input())) for _ in range(N)]
 
-for i in range(N):
-    a = input()
-    b = []
-    for j in range(M):
-        b.append(int(a[j]))
-    miro.append(b)
-    
 dx=[1,0,-1,0]
 dy=[0,1,0,-1]
 
