@@ -12,7 +12,7 @@ dy = [0,1,0,-1]
     
 def bfs(x,y,k):
     men[x][y]=0
-    q = deque([(x,y)])
+    q = deque([[x,y]])
     ans = 1
     while q:
         n = q.popleft()
@@ -22,7 +22,7 @@ def bfs(x,y,k):
             nx = x + dx[i]
             ny = y + dy[i]
             if -1 < nx and nx < N and -1 < ny and ny < M and men[nx][ny] == k:
-                q.append((nx,ny))
+                q.append([nx,ny])
                 men[nx][ny] = 0
                 ans += 1
     return ans**2
