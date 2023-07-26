@@ -15,9 +15,7 @@ def bfs(x,y,k):
     q = deque([[x,y]])
     ans = 1
     while q:
-        n = q.popleft()
-        x = n[0]
-        y = n[1]
+        x,y = q.popleft()
         for i in range(4):
             nx = x + dx[i]
             ny = y + dy[i]
