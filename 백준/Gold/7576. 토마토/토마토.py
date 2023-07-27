@@ -1,40 +1,34 @@
+import sys
+input = sys.stdin.readline
+
+M, N = map(int,input().split())
+m = [list(map(int,input().split())) for _ in range(N)]
+dx=[1,0,-1,0]
+dy=[0,1,0,-1]
+
 from collections import deque
-M, N = map(int, input().split())
-
-tomato=[]
-tmt_count=0
-all = M*N
-for i in range(N):
-    tomato.append(list(map(int, input().split())))
-    tmt_count += tomato[i].count(1)
-    all -= tomato[i].count(-1)
-
-queue = deque()
-day = 0
+q = deque()
 for i in range(N):
     for j in range(M):
-        if(tomato[i][j] == 1):
-            queue.append([i, j])
-
-while tmt_count != all and len(queue) != 0:
-    for _ in range(len(queue)):
-        v = queue.popleft()
-        if v[0] > 0 and tomato[v[0]-1][v[1]]==0:
-            queue.append([v[0]-1, v[1]])
-            tomato[v[0]-1][v[1]]=1
-        if v[1] > 0 and tomato[v[0]][v[1]-1]==0:
-            queue.append([v[0],v[1]-1])
-            tomato[v[0]][v[1]-1]=1
-        if v[0]+1 < N and tomato[v[0]+1][v[1]]==0:
-            queue.append([v[0]+1, v[1]])
-            tomato[v[0]+1][v[1]]=1
-        if v[1]+1 < M and tomato[v[0]][v[1]+1]==0:
-            queue.append([v[0], v[1]+1])
-            tomato[v[0]][v[1]+1]=1
-    tmt_count += len(queue)
-    day+=1
-
-if tmt_count != all:
-    print(-1)
+        if m[i][j] == 1:
+            q.append((i,j,0))
+            
+ans = 0
+while q:
+    x,y,d = q.popleft()
+    ans = max(ans, d)
+    for i in range(4):
+        nx = x + dx[i]
+        ny = y + dy[i]
+        if -1 < nx and nx < N and -1 < ny and ny < M and m[nx][ny]==0:
+            q.append((nx,ny, d+1))
+            m[nx][ny]=1
+p = 1
+for i in range(N):
+    for j in range(M):
+        if m[i][j]==0:
+            p=0
+if p==1:
+    print(ans)
 else:
-    print(day)
+    print(-1)
