@@ -23,12 +23,9 @@ while q:
         if -1 < nx and nx < N and -1 < ny and ny < M and m[nx][ny]==0:
             q.append((nx,ny, d+1))
             m[nx][ny]=1
-p = 1
+
 for i in range(N):
     for j in range(M):
         if m[i][j]==0:
-            p=0
-if p==1:
-    print(ans)
-else:
-    print(-1)
+            ans=-1
+print(ans)
