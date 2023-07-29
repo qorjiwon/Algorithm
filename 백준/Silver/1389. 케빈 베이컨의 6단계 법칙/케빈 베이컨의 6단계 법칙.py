@@ -12,11 +12,10 @@ for _ in range(M):
     arr[b].append(a)
 
 bacon = []
-q = deque()
 for i in range(1,N+1):
     visited = [0]*(N+1)
     visited[i]=-1
-    q.append((i,0))
+    q = deque([(i,0)])
     while q:
         x, d = q.popleft()
         for e in arr[x]:
