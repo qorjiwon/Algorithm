@@ -33,4 +33,3 @@ for h in height:
                 
     result.append(ans)
 print(max(result))
-            
