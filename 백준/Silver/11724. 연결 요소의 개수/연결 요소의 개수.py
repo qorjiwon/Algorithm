@@ -14,15 +14,14 @@ def bfs(start, visited):
     while q:
         x = q.popleft()
         for e in edges[x]:
-            if e not in visited:
+            if visited[e]==0:
                 q.append(e)
-                visited.append(e)
+                visited[e]=1
     
-    
-visited = []
+visited = [0]*(N+1)
 result = 0
 for i in range(N):
-    if i not in visited:
+    if visited[i]==0:
         result += 1
         bfs(i, visited)
 print(result)
