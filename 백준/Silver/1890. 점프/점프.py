@@ -1,24 +1,20 @@
+import sys
+input = sys.stdin.readline
+
 N = int(input())
-
-game=[]
-d=[[0 for _ in range(N)] for _ in range(N)]
-for _ in range(N):
-    game.append(list(map(int, input().split())))
-
-d[0][0]=1
-for y in range(N):
-    for x in range(N):
-        # print('x= ', x, 'y= ', y)
-        if x+game[y][x]<N:
-            d[y][x+game[y][x]] += d[y][x]
-            # print(x+game[y][x], y, "+", d[y][x])
-        if y+game[y][x]<N:
-            d[y+game[y][x]][x] += d[y][x]
-            # print(x, y+game[y][x], '+', d[y][x])
-#위에 이중 for문에서 y=x=N-1일 때 x2, x2 되는 경우 때문에 나누어줌
-d[N-1][N-1] //= 4
-# print('game\n', game)
-# print('d\n', d)
-# print('result\n', d[N-1][N-1])
-
-print(d[N-1][N-1])
+m = [list(map(int, input().split())) for _ in range(N)]
+mymap = [[0]*(N) for _ in range(N)]
+mymap[0][0]=1
+for x in range(N):
+    for y in range(N):
+        n = m[x][y]
+        dx = [n,0]
+        dy = [0,n]
+        for k in range(2):
+            nx = x + dx[k]
+            ny = y + dy[k]
+            if nx < N and ny < N:
+                    mymap[nx][ny] += mymap[x][y]
+#위에 이중 for문에서 x=y=N-1일 때 자기 자신을 두 번 더하는 것 때문에 나누어줌
+#                                               1->2배->4배
+print(mymap[N-1][N-1]//4)
