@@ -1,24 +1,18 @@
-T = int(input())
+import sys
+input = sys.stdin.readline
 
-d=[0]
-s=[0]*(T+1)
-for _ in range(T):
-    d.append(int(input()))
-if T<3:
-    for _ in range(T,5):
-        d.append(0)
-        s.append(0)
-
-
-s[1]=d[1]
-s[2]=d[1]+d[2]
-s[3]=d[3]+max(d[1],d[2])
-s[4]=d[4]+max(d[1]+d[2], d[1]+d[3])
-for i in range(4, T+1):
-    s[i]=d[i]+max(d[i-1]+s[i-3], s[i-2])
-
-print(s[T])
-# print('result d')
-# print(d)
-# print('result s')
-# print(s)
+N = int(input())
+if N < 4:
+    stairs = [int(input()) for _ in range(N)]
+    result = [0]*4
+    for i in range(3-N):
+        stairs.append(0)
+else:
+    stairs = [int(input()) for _ in range(N)]
+    result = [0]*N
+result[0] = stairs[0]
+result[1] = stairs[0]+stairs[1]
+result[2] = max(stairs[0]+stairs[2],stairs[1]+stairs[2])
+for i in range(3,N):
+    result[i] = max(result[i-3]+stairs[i-1]+stairs[i], stairs[i]+result[i-2])
+print(result[N-1])
