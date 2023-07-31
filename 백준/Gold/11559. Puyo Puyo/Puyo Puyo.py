@@ -17,11 +17,11 @@ def bfs(puyo, x,y):
             nx = x + dx[i]
             ny = y + dy[i]
             if -1 < nx and nx < 12 and -1 < ny and ny < 6:
-                if m[nx][ny] == puyo:
+                if m[nx][ny] == puyo: # 인접한 뿌요 터트리면서 a에 뿌요 위치 추가
                     a.append((nx,ny))
                     q.append((nx,ny))
                     m[nx][ny] = '.'
-    if len(a) < 4:
+    if len(a) < 4: # 인접 뿌요 수가 4개 미만이면 다시 복구
         for e in a:
             x, y = e
             m[x][y] = puyo
