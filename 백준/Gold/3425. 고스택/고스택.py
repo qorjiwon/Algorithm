@@ -1,21 +1,22 @@
 import sys
 input = sys.stdin.readline
 
-commands = [input().rstrip()]
-while commands[0] != 'QUIT':
-    if commands[0] != 'END':
+command = [input().rstrip()]
+MAX = 10**9
+while command[0] != 'QUIT':
+    if command[0] != 'END':
         while 1:
             o = input().rstrip()
             if o == 'END':
                 break
             else:
-                commands.append(o)
+                command.append(o)
             
     s = []
     for _ in range(int(input())):
         s.append(int(input()))
         e = 0 # 에러가 났는지 (0: 에러가 없음, 1: 에러 발생)
-        for V in commands:
+        for V in command:
             try:
                 if len(V) == 3:
                     if V == 'POP':
@@ -28,21 +29,21 @@ while commands[0] != 'QUIT':
                         s[-1], s[-2] = s[-2], s[-1]
                     elif V == 'ADD':
                         n = s.pop()+s.pop()
-                        if abs(n) > 10**9:
+                        if abs(n) > MAX:
                             e = 1
                             break
                         else:
                             s.append(n)
                     elif V == 'SUB':
                         n = -s.pop()+s.pop()
-                        if abs(n) > 10**9:
+                        if abs(n) > MAX:
                             e = 1
                             break
                         else:
                             s.append(n)
                     elif V == 'MUL':
                         n = s.pop()*s.pop()
-                        if abs(n) > 10**9:
+                        if abs(n) > MAX:
                             e = 1
                             break
                         else:
@@ -70,11 +71,7 @@ while commands[0] != 'QUIT':
                         else:
                             s.append(v2%v1)
                 else:
-                    if len(V[4:]) <= 10:
-                        s.append(int(V[4:]))
-                    else:
-                        e = 1
-                        break
+                    s.append(int(V[4:]))
             except:
                 e = 1
                 break
@@ -84,4 +81,4 @@ while commands[0] != 'QUIT':
             print(s.pop())
     print()
     input() # 두 번째 입력부터 첫 번째 줄에 공백을 받아옴
-    commands = [input().rstrip()]
+    command = [input().rstrip()]
