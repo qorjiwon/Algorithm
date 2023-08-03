@@ -10,8 +10,6 @@ for i in range(R):
     for j in range(C):
         if m[i][j] == '*':
             q_rain.append((i,j))
-        elif m[i][j] == 'D': # 동굴 위치
-            D = (i,j)
         elif m[i][j] == 'S': # 고슴도치 초기 위치
             q_S = deque([(i,j)])
 arrive = 0
