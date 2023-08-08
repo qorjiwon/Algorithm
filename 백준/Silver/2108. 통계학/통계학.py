@@ -3,7 +3,6 @@ input = sys.stdin.readline
 
 N = int(input())
 arr = [int((input())) for _ in range(N)]
-
 if N == 1:
     for _ in range(3):
         print(arr[0])
