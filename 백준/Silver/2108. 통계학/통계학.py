@@ -18,11 +18,11 @@ else:
             cnt[i]+=1
         else:
             cnt[i]=1
-    mx = max(cnt.values())
-    mxcnt = [e for e in cnt if cnt[e] == mx]
-    mxcnt.sort()
-    if len(mxcnt) == 1: # 최빈값이 하나일 때
-        print(mxcnt.pop())
+    mxcnt = max(cnt.values())
+    mx = [e for e in cnt if cnt[e] == mxcnt]
+    mx.sort()
+    if len(mx) == 1: # 최빈값이 하나일 때
+        print(mx.pop())
     else: # 최빈값이 여러 개일 때
-        print(mxcnt[1])
+        print(mx[1])
     print(arr[N-1]-arr[0]) # 범위
