@@ -20,4 +20,4 @@ else:
                 newn[a], newn[b] = newn[b], newn[a]
                 T.add(tuple(newn))
         arr = sorted(list(T))
-    print("".join(max(arr)))
+    print("".join(arr[-1]))
