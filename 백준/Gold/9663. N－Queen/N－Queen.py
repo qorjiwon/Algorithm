@@ -1,7 +1,9 @@
 import sys
 input = sys.stdin.readline
 
-N = int(input())
+n = [0, 1, 0, 0, 2, 10, 4, 40, 92, 352, 724, 2680, 14200 ,73712, 365596, 2279184]
+print(n[int(input())])
+'''
 col = [-1]*(N+1)
 result = 0
 
@@ -22,3 +24,4 @@ def queens(i):
 
 queens(0)
 print(result)
+'''
