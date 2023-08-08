@@ -9,8 +9,7 @@ if M == 2 and N[1]=='0': print(-1) ; exit()
 arr = [N]
 from itertools import combinations
 for _ in range(K):
-    T = set()
-    dic = list(combinations(range(M),2))
+    T = set() ; dic = list(combinations(range(M),2))
     for n in arr:
         for a, b in dic:
             newn = list(n)
