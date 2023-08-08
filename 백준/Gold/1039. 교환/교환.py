@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 N, K = input().split()
 K = int(K) ; M = len(N) ; N = tuple(N)
 
