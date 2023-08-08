@@ -5,7 +5,6 @@ N, M = map(int, input().split())
 tree = list(map(int,input().split()))
 max_high = max(tree)
 min_high = 0
-high = max_high//2
 
 while min_high <= max_high:
     high = (min_high+max_high)//2
