@@ -12,6 +12,5 @@ while mn <= mx:
     if n < k: # k개보다 적으면 더 큰 값 조사
         mn = mid + 1
     else: # k개보다 많거나 같으면 더 작은 값 조사
-        ans = mid
         mx = mid - 1
 print(mn)
