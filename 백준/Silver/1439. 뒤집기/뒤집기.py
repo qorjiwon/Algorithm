@@ -1,11 +1,7 @@
-s = [int(e) for e in list(input())]
+s = list(input())
 
-ans = [0,0] # [이어진 0 개수, 이어진 1 개수]
-n = s[0] # 첫 번째 숫자
-ans[n] = 1 # 이어진 첫 번째 숫자의 개수를 1로
-
-for e in s:
-    if n != e:
-        n = e
-        ans[n] += 1
-print(min(ans))
+ans = 1 # 같은 숫자끼리 연속된 영역 개수
+for i in range(len(s)-1):
+    if s[i] != s[i-1]:
+        ans += 1
+print(ans//2) # 영역 3개 -> 1번 뒤집기, 영역 4개 -> 2번 뒤집기
