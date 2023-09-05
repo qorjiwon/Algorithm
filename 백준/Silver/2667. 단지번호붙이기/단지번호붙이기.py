@@ -1,7 +1,7 @@
 import sys
 input = sys.stdin.readline
-
 N = int(input())
+
 m = [list(map(int,input().rstrip())) for _ in range(N)]
 dx=[1,0,-1,0]
 dy=[0,1,0,-1]
