@@ -2,14 +2,16 @@ import sys
 input = sys.stdin.readline
 
 A, B = map(int, input().split())
-from collections import deque
-q = deque([(A,0)])
-while q:
-    a, n = q.popleft()
-    if a < B:
-        q.append((a*2,n+1))
-        q.append((int(str(a)+'1'),n+1))
-    elif a == B:
-        print(n+1)
-        exit()
-print(-1)
+n = 1
+while A < B:
+    if B%2 == 0:
+        B = B//2
+    elif B%10 == 1:
+        B = B//10
+    else:
+        B = -1
+    n += 1
+if A == B:
+    print(n)
+else:
+    print(-1)
