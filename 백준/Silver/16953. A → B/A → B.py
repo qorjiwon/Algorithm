@@ -1,7 +1,5 @@
-import sys
-input = sys.stdin.readline
-
 A, B = map(int, input().split())
+
 n = 1
 while A < B:
     if B%2 == 0:
@@ -11,6 +9,7 @@ while A < B:
     else:
         B = -1
     n += 1
+    
 if A == B:
     print(n)
 else:
