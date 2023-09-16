@@ -8,6 +8,5 @@ dp[0] = 1 # 동전을 1개만 쓸 때의 경우의 수를 고려하기 위해 �
 
 for i in c:
     for j in range(i, k+1):
-        if j >= i:
-            dp[j] += dp[j-i]
+        dp[j] += dp[j-i]
 print(dp[k])
