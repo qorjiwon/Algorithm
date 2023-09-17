@@ -12,4 +12,4 @@ for i in range(1, N+1):
     end_day = i+T[i]-1 # 상담 마지막 날
     if end_day <= N:
             dp[end_day] = max(dp[end_day], dp[i-1]+P[i])
-print(max(dp))
+print(dp[N])
