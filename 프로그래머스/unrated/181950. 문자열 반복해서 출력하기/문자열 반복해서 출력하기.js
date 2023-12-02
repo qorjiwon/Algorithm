@@ -7,11 +7,6 @@ const rl = readline.createInterface({
 let input = [];
 
 rl.on('line', function (line) {
-    input = line.split(' ');
-}).on('close', function () {
-    str = input[0];
-    n = Number(input[1]);
-    for (let i = 0; i < n; i++){
-        rl.output.write(str, end='');
-    }
+    const[str, n] = line.split(' ');
+    console.log(str.repeat(n));
 });
