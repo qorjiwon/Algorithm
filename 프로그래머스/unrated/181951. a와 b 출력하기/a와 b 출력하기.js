@@ -7,8 +7,6 @@ const rl = readline.createInterface({
 let input = [];
 
 rl.on('line', function (line) {
-    input = line.split(' ');
-}).on('close', function () {
-    console.log("a =",Number(input[0]));
-    console.log("b =",Number(input[1]));
-});
+    const [a, b] = line.split(' ');
+    console.log("a =", a, "\nb =", b);
+})
