@@ -1,3 +1,3 @@
-str = input()
-for alpha in range(ord('a'), ord('z')+1):
-    print(str.find(chr(alpha)), end=' ')
+s = input()
+for a in range(97,123):
+    print(s.find(chr(a)), end=' ')
