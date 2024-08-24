@@ -6,7 +6,7 @@ input = sys.stdin.readline
 n = int(input())
 a, b = map(int, input().split())
 m = int(input())
-queue = deque()
+q = deque()
 
 rel = [[] for _ in range(n+1)] # relationship
 for i in range(m):
@@ -19,16 +19,16 @@ ans = -1
 
 for i in rel[a]:
     visited[i] = 1
-    queue.append([i, 1])
+    q.append([i, 1])
 
-while queue:
-    x, cnt = queue.popleft()
+while q:
+    x, cnt = q.popleft()
     if (x == b):
         ans = cnt
         break
     for i in rel[x]:
         if (visited[i] == 0):
             visited[i] = 1
-            queue.append([i, cnt+1])
+            q.append([i, cnt+1])
 
 print(ans)
