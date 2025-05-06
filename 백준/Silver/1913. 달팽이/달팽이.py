@@ -1,47 +1,31 @@
-n=int(input())
+import sys
+input = sys.stdin.readline
 
-dal = [[0 for _ in range(n)] for _ in range(n)]
+dx = [1, 0, -1, 0]
+dy = [0, 1, 0, -1]
+d = 0
 
-item = 1
-x= n//2
-y = n//2
-for i in range(1, n+1, 2):
-    if (i == 1):
-        dal[y][x] = item
-        item += 1
+n = int(input())
+num = n * n
+find_num = int(input())
+arr = [[0] * n for _ in range(n)]
+x, y = -1, 0
+
+while num:
+    nx = x + dx[d]
+    ny = y + dy[d]
+    if nx > -1 and nx < n and ny > -1 and ny < n and not arr[nx][ny]:
+        arr[nx][ny] = num
+        x, y = nx, ny
+        num -= 1
     else:
-        y -= 1
-        dal[y][x] = item
-        item += 1
-        for _ in range(i-2):
-            x += 1
-            dal[y][x] = item
-            item += 1
-        for _ in range(i-1):
-            y += 1
-            dal[y][x] = item
-            item += 1
-        for _ in range(i-1):
-            x -= 1
-            dal[y][x] = item
-            item += 1
-        for _ in range(i-1):
-            y -= 1
-            dal[y][x] = item
-            item += 1
+        d = (d+1)%4
 
-m = int(input())
+for li in arr:
+    print(*li)
+
 for i in range(n):
     for j in range(n):
-        if (dal[i][j] == m):
-            break
-    if (dal[i][j] == m):
-            i += 1
-            j += 1
-            break
-for a in dal:
-    for b in a:
-        print(b, end=' ')
-    print()
-    
-print(i, j)
+        if arr[i][j] == find_num:
+            print(i+1, j+1)
+            sys.exit(0)
