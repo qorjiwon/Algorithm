@@ -1,4 +1,2 @@
-import re
-
 def solution(s):
-    return True if re.fullmatch("[0-9]{4}|[0-9]{6}", s) else False
+    return True if s.isdigit() and len(s) in [4, 6] else False
