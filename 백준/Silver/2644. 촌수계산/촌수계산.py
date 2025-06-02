@@ -1,34 +1,28 @@
-from collections import deque
 import sys
-
 input = sys.stdin.readline
+from collections import deque
 
 n = int(input())
 a, b = map(int, input().split())
 m = int(input())
-q = deque()
 
-rel = [[] for _ in range(n+1)] # relationship
-for i in range(m):
+graph = [[] for _ in range(n + 1)]
+for _ in range(m):
     x, y = map(int, input().split())
-    rel[x].append(y)
-    rel[y].append(x)
-visited = [0]*(n+1)
+    graph[x].append(y)
+    graph[y].append(x)
 
-ans = -1
+q = deque([(a, 0)])
 
-for i in rel[a]:
-    visited[i] = 1
-    q.append([i, 1])
+visited = [0] * (n + 1)
 
 while q:
-    x, cnt = q.popleft()
-    if (x == b):
-        ans = cnt
-        break
-    for i in rel[x]:
-        if (visited[i] == 0):
-            visited[i] = 1
-            q.append([i, cnt+1])
-
-print(ans)
+    p, r = q.popleft()
+    for neighbor in graph[p]:
+        if neighbor == b:
+            print(r + 1)
+            sys.exit()
+        elif not visited[neighbor]:
+            visited[neighbor] = 1
+            q.append([neighbor, r+1])
+print(-1)
