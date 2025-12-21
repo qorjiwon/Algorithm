@@ -2,44 +2,17 @@ import sys
 input = sys.stdin.readline
 
 N = int(input())
-cards = list(map(int, input().split()))
-cards.sort()
+nums = list(map(int, input().split()))
+nums.sort()
 
 M = int(input())
-checkout_cards = list(map(int, input().split()))
+targets = list(map(int, input().split()))
 
-def cnt(arr, target):
-    left, right = 0, len(arr) - 1
-    first, last = -1, -1
+ans = {}
+for n in nums:
+    if n in ans:
+        ans[n] += 1
+    else:
+        ans[n] = 1
 
-    while left <= right:
-        mid = (left + right) // 2
-        if arr[mid] >= target:
-            right = mid - 1
-            if arr[mid] == target:
-                first = mid
-        else:
-            left = mid + 1
-
-    if first == -1:
-        return 0
-
-    left, right = 0, len(arr) - 1
-
-    # Find last occurrence
-    while left <= right:
-        mid = (left + right) // 2
-        if arr[mid] <= target:
-            left = mid + 1
-            if arr[mid] == target:
-                last = mid
-        else:
-            right = mid - 1
-
-    return last - first + 1
-
-ans = []
-for card in checkout_cards:
-    ans.append(str(cnt(cards, card)))
-
-print(' '.join(ans))
+print(' '.join([str(ans.get(t, 0)) for t in targets]))
