@@ -3,21 +3,20 @@ input = sys.stdin.readline
 from collections import deque
 
 n = int(input())
-graph = [[] for _ in range(n + 1)]
-for _ in range(int(input())):
-    a, b = map(int, input().split())
-    graph[a].append(b)
-    graph[b].append(a)
-
-infected = [0]*(n + 1)
+connection = [[] for _ in range(n+1)]
+infected = [0] * (n+1)
 infected[1] = 1
 q = deque([1])
-ans = 0
+for _ in range(int(input())):
+    a, b = map(int, input().split())
+    connection[a].append(b)
+    connection[b].append(a)
+
 while q:
-    computer = q.popleft()
-    for neighbor in graph[computer]:
-        if not infected[neighbor]:
-            q.append(neighbor)
-            infected[neighbor] = 1
-            ans += 1
-print(ans)
+    x = q.pop()
+    for i in connection[x]:
+        if not infected[i]:
+            infected[i] = 1
+            q.append(i)
+
+print(sum(infected)-1)
