@@ -1,10 +1,13 @@
+import sys
+input = sys.stdin.readline
+
 d = [(-1, 0), (0, -1), (1, 0), (0, 1)] # 왼 위 오 아
 
 for _ in range(int(input())):
     x, y = 0, 0
     direction = 1
     left, right, top, bottom = 0, 0, 0, 0
-    order = input()
+    order = input().strip()
     for step in order:
         if step == 'F':
             x += d[direction][0]
