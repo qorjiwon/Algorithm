@@ -1,8 +1,7 @@
 from collections import Counter
 
 N = int(input())
-nums = list(map(int, input().split()))
-nums = counter = Counter(nums)
+nums = Counter(list(map(int, input().split())))
 
 M = int(input())
 targets = list(map(int, input().split()))
