@@ -19,12 +19,11 @@ for i in range(n):
             arr[i][j] = 0
             ans[i][j] = 0
 
-
 while q:
     x, y, d = q.popleft()
     for i in range(4):
         nx, ny = x+dx[i], y+dy[i]
-        if -1 < nx < n and -1 < ny < m and arr[nx][ny]:
+        if 0 <= nx < n and 0 <= ny < m and arr[nx][ny]:
             arr[nx][ny] = 0
             ans[nx][ny] = d+1
             q.append((nx, ny, d+1))
