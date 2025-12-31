@@ -1,8 +1,5 @@
-import sys
-input = sys.stdin.readline
-
 for _ in range(int(input())):
-    str = input().rstrip()
+    str = input()
     ans = 0
     score = 1
     for x in str:
