@@ -1,4 +1,8 @@
-from math import comb
+def fac(n):
+    sum = 1
+    for i in range(1, n+1):
+        sum *= i
+    return sum
 
 N, K = map(int, input().split())
-print(comb(N+K-1, N)%1000000000)
+print(fac(N+K-1)//(fac(N)*fac(K-1))%1000000000)
