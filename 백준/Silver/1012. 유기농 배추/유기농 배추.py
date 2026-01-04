@@ -17,7 +17,7 @@ for _ in range(int(input())):
                 q = [(i, j)]
                 while q:
                     x, y = q.pop()
-                    for dx, dy in d:
+                    for (dx, dy) in d:
                         nx, ny = x + dx, y + dy
                         if 0 <= nx < N and 0 <= ny < M and arr[nx][ny]:
                             q.append((nx, ny))
