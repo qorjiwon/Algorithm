@@ -4,7 +4,6 @@ N, M = map(int, input().split())
 arr = [list(map(int, input().split())) for _ in range(N)]
 
 q = deque()
-dx = [-1, 1, 0, 0]
 d = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 ans = 0
 for li in arr:
