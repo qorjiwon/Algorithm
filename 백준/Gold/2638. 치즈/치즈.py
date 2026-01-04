@@ -5,7 +5,7 @@ arr = [list(map(int, input().split())) for _ in range(N)]
 
 q = deque()
 dx = [-1, 1, 0, 0]
-dy = [0, 0, 1, -1]
+d = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 ans = 0
 for li in arr:
     if 1 in li:
@@ -16,8 +16,8 @@ while q:
     visited = [[0] * M for _ in range(N)]
     while q:  # 치즈 녹을 곳 검사
         x, y = q.popleft()
-        for i in range(4):
-            nx, ny = x + dx[i], y + dy[i]
+        for dx, dy in d:
+            nx, ny = x + dx, y + dy
             if 0 <= nx < N and 0 <= ny < M and not visited[nx][ny]:
                 if arr[nx][ny]:
                     arr[nx][ny] += 1
