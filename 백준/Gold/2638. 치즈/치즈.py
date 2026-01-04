@@ -1,37 +1,29 @@
 N, M = map(int, input().split())
 arr = [list(map(int, input().split())) for _ in range(N)]
 
-q = []
-dx = [-1, 1, 0, 0]
+q = [(0, 0)]
 d = [(-1, 0), (1, 0), (0, -1), (0, 1)]
-ans = 0
-for li in arr:
-    if 1 in li:
-        q.append((0, 0))
-        break
+ans = -1
 
 while q:
-    visited = [[0] * M for _ in range(N)]
+    _q = [] # 다음에 돌 곳
     while q:  # 치즈 녹을 곳 검사
-        x, y = q.pop(0)
+        x, y = q.pop()
         for dx, dy in d:
             nx, ny = x + dx, y + dy
-            if 0 <= nx < N and 0 <= ny < M and not visited[nx][ny]:
-                if arr[nx][ny]:
-                    arr[nx][ny] += 1
-                else:
-                    visited[nx][ny] = 1
+            if 0 <= nx < N and 0 <= ny < M:
+                v = arr[nx][ny]
+                if v < 0: # 이미 방문
+                    continue
+                elif not v: # 빈 자리
+                    arr[nx][ny] = -1
                     q.append((nx, ny))
-
-    for i in range(N):  # 치즈 녹이기
-        for j in range(M):
-            if arr[i][j] > 2:
-                arr[i][j] = 0
-            elif arr[i][j] == 2:
-                arr[i][j] = 1
+                elif v == 1:
+                    arr[nx][ny] += 1
+                else: # v > 1, 한 번 방문했는데 재방문
+                    arr[nx][ny] = -1
+                    _q.append((nx, ny)) # 다음 turn(한 시간 후) 방문
+    q = _q
     ans += 1
-    for li in arr:
-        if 1 in li:
-            q.append((0, 0))
-            break
+
 print(ans)
