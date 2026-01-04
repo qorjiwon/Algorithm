@@ -13,7 +13,7 @@ for li in arr:
 while q:
     visited = [[0] * M for _ in range(N)]
     while q:  # 치즈 녹을 곳 검사
-        x, y = q.pop()
+        x, y = q.pop(0)
         for dx, dy in d:
             nx, ny = x + dx, y + dy
             if 0 <= nx < N and 0 <= ny < M and not visited[nx][ny]:
