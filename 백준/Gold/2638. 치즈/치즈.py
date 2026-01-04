@@ -1,9 +1,8 @@
-from collections import deque
-
 N, M = map(int, input().split())
 arr = [list(map(int, input().split())) for _ in range(N)]
 
-q = deque()
+q = []
+dx = [-1, 1, 0, 0]
 d = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 ans = 0
 for li in arr:
@@ -14,7 +13,7 @@ for li in arr:
 while q:
     visited = [[0] * M for _ in range(N)]
     while q:  # 치즈 녹을 곳 검사
-        x, y = q.popleft()
+        x, y = q.pop()
         for dx, dy in d:
             nx, ny = x + dx, y + dy
             if 0 <= nx < N and 0 <= ny < M and not visited[nx][ny]:
