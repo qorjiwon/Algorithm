@@ -1,31 +1,25 @@
 import sys
-from collections import deque
 input = sys.stdin.readline
 
-dx = [1,0,-1,0]
-dy = [0,1,0,-1]
-    
+d = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+
 for _ in range(int(input())):
     M, N, K = map(int, input().split())
-    m = [[0]*M for _ in range(N)]
+    arr = [[0] * M for _ in range(N)]
     for _ in range(K):
-        X, Y = map(int, input().split())
-        m[Y][X] = 1
+        Y, X = map(int, input().split())
+        arr[X][Y] = 1
     ans = 0
     for i in range(N):
         for j in range(M):
-            if m[i][j]:
+            if arr[i][j]:
                 ans += 1
-                m[i][j]=0
-                q = deque([(i,j)])
+                q = [(i, j)]
                 while q:
-                    x, y = q.popleft()
-                    for k in range(4):
-                        nx = x + dx[k]
-                        ny = y + dy[k]
-                        if -1 < nx and nx < N and -1 < ny and ny < M and m[nx][ny]:
-                            m[nx][ny]=0
-                            q.append((nx,ny))
+                    x, y = q.pop()
+                    for dx, dy in d:
+                        nx, ny = x + dx, y + dy
+                        if 0 <= nx < N and 0 <= ny < M and arr[nx][ny]:
+                            q.append((nx, ny))
+                            arr[nx][ny] = 0
     print(ans)
-        
-    
