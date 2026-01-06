@@ -1,35 +1,36 @@
 import sys
 input = sys.stdin.readline
 
-from collections import deque
-
 N, M, V = map(int, input().split())
-graph = [[] for _ in range(N + 1)]
-visited = [False] * (N + 1)
-
+graph = [[]*(N+1) for _ in range(N+1)]
 for _ in range(M):
-    u, v = map(int, input().split())
-    graph[u].append(v)
-    graph[v].append(u)
+    a, b = map(int, input().split())
+    graph[a].append(b)
+    graph[b].append(a)
 
-for i in range(1, N + 1):
-    graph[i].sort()
+for li in graph:
+    li.sort()
 
-def dfs(node):
-    print(node, end=' ')
-    visited[node] = True
-    for neighbor in graph[node]:
-        if not visited[neighbor]:
-            dfs(neighbor)
+visited = [0]*(N+1)
+visited[V]=1
+
+def dfs(now):
+    print(now, end=' ')
+    for n in graph[now]:
+        if not visited[n]:
+            visited[n] = 1
+            dfs(n)
 dfs(V)
 print()
-visited = [False] * (N + 1)
-q = deque([V])
+
+q = [V]
+visited = [0]*(N+1)
+visited[V] = 1
 while q:
-    node = q.popleft()
-    if not visited[node]:
-        visited[node] = True
-        print(node, end=' ')
-        for neighbor in graph[node]:
-            if not visited[neighbor]:
-                q.append(neighbor)
+    now = q.pop(0)
+    print(now, end=' ')
+    for n in graph[now]:
+        if not visited[n]:
+            visited[n] = 1
+            q.append(n)
+print()
